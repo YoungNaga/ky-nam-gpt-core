@@ -48,4 +48,51 @@ function chunkArray(array, size) {
       const search = await notion.search({ query: titleText });
       const existingPage = search.results.find(
         p => p.object === 'page' &&
-             p.properties?.title?.t
+             p.properties?.title?.title?.[0]?.text?.content === titleText
+      );
+
+      let pageId = null;
+      if (existingPage) {
+        pageId = existingPage.id;
+        console.log(`🔁 Found existing page: ${titleText}`);
+
+        // 2. Xóa toàn bộ block con cũ (nếu muốn update lại)
+        const children = await notion.blocks.children.list({ block_id: pageId });
+        for (const child of children.results) {
+          await notion.blocks.delete({ block_id: child.id }).catch(() => {});
+        }
+      } else {
+        // 3. Tạo page mới nếu không tìm thấy
+        const createdPage = await notion.pages.create({
+          parent: { page_id: PARENT_PAGE_ID },
+          properties: {
+            title: {
+              title: [
+                {
+                  type: 'text',
+                  text: { content: titleText }
+                }
+              ]
+            }
+          }
+        });
+        pageId = createdPage.id;
+        console.log(`✅ Created new page: ${titleText}`);
+      }
+
+      // 4. Append nội dung mới vào page (cũ hoặc mới)
+      for (const chunk of chunks) {
+        await notion.blocks.children.append({
+          block_id: pageId,
+          children: chunk
+        });
+      }
+
+      console.log(`🚀 Synced: ${fileName}`);
+    } catch (error) {
+      console.error(`❌ Error with ${fileName}:`, error.message);
+    }
+  }
+
+  console.log('🎉 All Markdown files uploaded or updated!');
+})();
