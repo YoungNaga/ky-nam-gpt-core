@@ -25,15 +25,25 @@ const paragraphs = markdownContent.split('\n').map(line => ({
   paragraph: {
     rich_text: [{
       type: 'text',
-      text: { content: line }
+      text: { content: line || ' ' } // nếu dòng trống thì truyền dấu cách
     }]
   }
 }));
 
+// Hàm chia mảng thành nhiều chunk
+function chunkArray(array, size) {
+  const result = [];
+  for (let i = 0; i < array.length; i += size) {
+    result.push(array.slice(i, i + size));
+  }
+  return result;
+}
+
 // Upload
 (async () => {
   try {
-    const response = await notion.pages.create({
+    // Bước 1: tạo page mới với title
+    const createdPage = await notion.pages.create({
       parent: { page_id: NOTION_PAGE_ID },
       properties: {
         title: {
@@ -46,12 +56,24 @@ const paragraphs = markdownContent.split('\n').map(line => ({
             }
           ]
         }
-      },
-      children: paragraphs
+      }
     });
-    console.log('✅ Page created in Notion:', response.id);
+
+    console.log('✅ Page created:', createdPage.id);
+
+    // Bước 2: chia block thành các chunk nhỏ và append dần
+    const chunks = chunkArray(paragraphs, 100);
+    for (const chunk of chunks) {
+      await notion.blocks.children.append({
+        block_id: createdPage.id,
+        children: chunk
+      });
+      console.log(`✅ Uploaded chunk of ${chunk.length} blocks`);
+    }
+
+    console.log('🎉 Upload hoàn tất!');
   } catch (error) {
-    console.error('❌ Error creating page:', JSON.stringify(error, null, 2));
+    console.error('❌ Error:', JSON.stringify(error, null, 2));
     process.exit(1);
   }
 })();
