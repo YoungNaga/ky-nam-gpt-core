@@ -1,0 +1,10 @@
+{
+  "name": "kynam-sync",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "uploadMarkdownToNotion.js",
+  "dependencies": {
+    "@notionhq/client": "^2.0.0",
+    "dotenv": "^16.0.0"
+  }
+}
