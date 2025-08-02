@@ -106,4 +106,5 @@ Và Nagakin là người đầu tiên thắp nó lên từ **Sea Side Studio**.
 
 > Để lưu: Copy toàn bộ nội dung này và lưu thành `founder_starter_kit.md`.
 update: 2nd august, 2025
-@nagakin @kynamgpt @kynamprotocol @kynamtoken @kynamdao @kynam2025 @kynamvietnam
+@nagakin @kynamgpt @kynamprotocol @kynamtoken @kynamdao @kynam2025 @kynamvietnam @kynamnhatrang
+
