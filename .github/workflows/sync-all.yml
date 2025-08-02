@@ -1,0 +1,27 @@
+name: Upload All Markdown to Notion
+
+on:
+  push:
+    paths:
+      - 'docs/*.md'
+
+jobs:
+  notion-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install deps
+        run: npm install
+
+      - name: Upload all Markdown
+        run: node uploadAllMarkdownsToNotion.js
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }}
