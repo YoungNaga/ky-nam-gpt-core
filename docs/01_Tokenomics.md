@@ -34,4 +34,4 @@
 - Dự kiến: Q4/2026
 - Sàn ưu tiên: MEXC / Coinstore / PancakeSwap (BSC)
 
-  @nagakin @vestinceo
+  @nagakin @vestinceo fixed
