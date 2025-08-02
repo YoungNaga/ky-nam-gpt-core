@@ -42,36 +42,35 @@ function chunkArray(array, size) {
 // Upload
 (async () => {
   try {
-    // Bước 1: tạo page mới với title
-    const createdPage = await notion.pages.create({
-      parent: { page_id: NOTION_PAGE_ID },
-      properties: {
-        title: {
-          title: [
-            {
-              type: "text",
-              text: {
-                content: "✅ Kỳ Nam GPT Whitepaper"
-              }
-            }
-          ]
-        }
-      }
+    console.log('📄 Page to update:', NOTION_PAGE_ID);
+
+    // Bước 1: Lấy danh sách block cũ để xóa
+    const oldBlocks = await notion.blocks.children.list({
+      block_id: NOTION_PAGE_ID,
     });
 
-    console.log('✅ Page created:', createdPage.id);
-
-    // Bước 2: chia block thành các chunk nhỏ và append dần
-    const chunks = chunkArray(paragraphs, 100);
-    for (const chunk of chunks) {
-      await notion.blocks.children.append({
-        block_id: createdPage.id,
-        children: chunk
-      });
-      console.log(`✅ Uploaded chunk of ${chunk.length} blocks`);
+    console.log(`🧹 Đang xoá ${oldBlocks.results.length} block cũ...`);
+    for (const block of oldBlocks.results) {
+      try {
+        await notion.blocks.delete({ block_id: block.id });
+        console.log(`🗑️ Deleted block: ${block.id}`);
+      } catch (err) {
+        console.warn(`⚠️ Không xoá được block ${block.id} (có thể không do API tạo): ${err.message}`);
+      }
     }
 
-    console.log('🎉 Upload hoàn tất!');
+    // Bước 2: Chia và append nội dung mới
+    const chunks = chunkArray(paragraphs, 100);
+    let count = 1;
+    for (const chunk of chunks) {
+      await notion.blocks.children.append({
+        block_id: NOTION_PAGE_ID,
+        children: chunk
+      });
+      console.log(`➡️ Chunk ${count++}/${chunks.length} uploaded.`);
+    }
+
+    console.log('🎉 All content uploaded successfully!');
   } catch (error) {
     console.error('❌ Error:', JSON.stringify(error, null, 2));
     process.exit(1);
