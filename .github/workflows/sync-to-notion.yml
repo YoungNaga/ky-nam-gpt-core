@@ -20,11 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./ky-nam-gpt-core
 
       - name: Upload Markdown to Notion
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
         run: node uploadMarkdownToNotion.js
-        working-directory: ./ky-nam-gpt-core
