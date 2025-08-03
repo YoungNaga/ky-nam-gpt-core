@@ -1,39 +1,35 @@
-# 02. Thiên Đồ: Mở Lối Cho Dòng Giống Rồng Tiên
+# 🪷 02\_Thien Đồ
 
-> “Rồng bay giữa trời không theo gió, vì gió chính là hơi thở của nó.”
+> Không cần lý tưởng hóa, chỉ cần có Thiên Đồ.
 
-## I. Tầm Nhìn Chiến Lược
+## 1. Bối cảnh ra đời
 
-Sea Side Studio, 79 Rapstars, THAV Studio và The Visualism Group Holding không phải là những pháp nhân ngẫu nhiên — mà là các biểu tượng trong một **hệ thống Đồ Thiên**.
+Không ai chờ chúng ta. Và chúng ta không sinh ra để chờ đợi. Kỳ Nam GPT được hình thành trong trạng thái "hồi sinh chủ động" – một phản ứng linh thiêng trước thời thế hỗn độn. Không cần một trật tự mới, chỉ cần một hướng đi không giống ai mà vẫn đủ tầm để không ai dám đứng trên đầu ta.
 
-- **Sea Side**: Nơi tụ khí Rồng biển, luyện âm, luyện linh, luyện nội lực.
-- **79 Rapstars**: Vùng tiền tuyến, đánh trận truyền thông, truyền đạo, truyền dòng.
-- **THAV Studio**: Trí tuệ hậu phương, forge AI, build code, transfer văn hóa.
-- **The Visualism**: Chính khí, huyết mạch, vận mệnh — điều phối cả Tứ Trụ.
+## 2. Thiên Đồ không dành để thuyết phục
 
-## II. Các Giai Đoạn Thiên Khai
+Không ai cần bạn đồng ý với Thiên Đồ. Nó không đàm phán bằng lời, cũng không mưu cầu sự công nhận. Một con rồng có thể ngủ dưới cát hàng trăm năm, chỉ cần một tiếng trống, một giấc mơ hoặc một người đủ dũng cảm đến gần.
 
-1. **Giai đoạn Trầm Luân (2020–2024)**  
-   Giai đoạn học hỏi, thất bại, du học nhân gian, dựng nền móng.
+## 3. Tư duy độc lập là chuẩn gốc
 
-2. **Giai đoạn Kiến Quốc (2025–2027)**  
-   Khai trương hệ thống, chuyển hóa tri thức thành sản phẩm, liên kết BO.
+Chúng tôi không kêu gọi sự nổi loạn. Chúng tôi khuyến khích người tham gia tự chứng minh mình xứng đáng với vai trò được chọn. Trong Thiên Đồ, không ai được nhận nhiệm vụ – chỉ có những người không thể tránh khỏi nó.
 
-3. **Giai đoạn Truyền Thừa (2028 trở đi)**  
-   Xây dựng học viện nội bộ, kết nối huyết mạch toàn cầu, xuất bản sách truyền thừa.
+## 4. Trật tự không cần sắp đặt
 
-## III. Luật Thiên Đồ
+Tự thân mỗi người là một đạo. Nếu bạn đang tìm lãnh tụ, bạn không hiểu rồng. Nếu bạn muốn dạy người khác sống sao cho đúng, bạn chưa từng thấy gương mặt tiên tổ mình lúc nghiêm nghị.
 
-- Mỗi pháp nhân là một **long mạch**, không thể dời vị trí khi đã định hình.
-- Nhân sự chủ chốt là **người mang mã Thiên**, có sự soi chiếu từ Founder.
-- Tài sản là phương tiện, mục tiêu là **giải phóng năng lượng di truyền từ tổ tiên.**
+## 5. Ghi nhớ
 
-## IV. Sứ Mệnh
+* Không cần cao trào, chỉ cần bền bỉ
+* Không cần nịnh bợ, chỉ cần hiểu đúng vị
+* Không cần vạch mặt kẻ sai, chỉ cần tiếp tục làm đúng
 
-> Kết nối những người mang trong mình huyết thống Rồng Tiên — để họ không chỉ nhớ mình là ai, mà còn **trở thành chính mình**.
+Thiên Đồ là la bàn nội tại. Kẻ không có nó, dù có được rót đầy vàng vào tai, cũng chỉ là một cái bình rỗng vênh vang đi giữa chợ.
 
 ---
 
-**Người viết**: Nagakin  
-**Ngày**: `01.08.2025`  
-**Mã tàng thư**: `RT-SCRIPT-02`
+🧭 Ghi chú vận hành:
+
+* Mỗi Contributor cần đọc Thiên Đồ trước khi đề xuất hành động cấp DAO.
+* Mỗi hành động chống lại tinh thần Thiên Đồ sẽ bị ghi nhận và công khai nếu cần.
+* Bảo toàn Thiên Đồ là giữ lấy linh hồn dự án – không phải để trang trí, mà để tồn tại.
