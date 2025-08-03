@@ -9,12 +9,16 @@ import { markdownToBlocks } from './utils/markdownToBlocks.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// 🔐 Init Notion client
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const PARENT_PAGE_ID = process.env.NOTION_PARENT_PAGE_ID;
 
-const fileName = '✅ 00_KyNamGPT_Whitepaper.md';
+// 🧾 Đặt đúng tên file (KHÔNG emoji trong tên file hệ thống)
+const fileName = '00_KyNamGPT_Whitepaper.md'; // tên file vật lý trong thư mục docs
+const titleEmoji = '📄'; // emoji cho tiêu đề page trên Notion
+const titleText = `${titleEmoji} ${fileName.replace('.md', '')}`;
+
 const filePath = path.join(__dirname, 'docs', fileName);
-const titleText = `📄 ${fileName.replace('.md', '')}`;
 
 function chunkArray(array, size) {
   const result = [];
@@ -25,11 +29,13 @@ function chunkArray(array, size) {
 }
 
 (async () => {
-  const content = fs.readFileSync(filePath, 'utf-8');
-  const blocks = markdownToBlocks(content);
-  const chunks = chunkArray(blocks, 100);
-
   try {
+    // 📥 Đọc nội dung markdown
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const blocks = markdownToBlocks(content);
+    const chunks = chunkArray(blocks, 100);
+
+    // 🔍 Kiểm tra page đã tồn tại hay chưa
     const search = await notion.search({ query: titleText });
     const existingPage = search.results.find(
       p => p.object === 'page' &&
@@ -37,15 +43,18 @@ function chunkArray(array, size) {
     );
 
     let pageId = null;
+
     if (existingPage) {
       pageId = existingPage.id;
       console.log(`🔁 Found existing page: ${titleText}`);
 
+      // ❌ Xóa các block con cũ
       const children = await notion.blocks.children.list({ block_id: pageId });
       for (const child of children.results) {
         await notion.blocks.delete({ block_id: child.id }).catch(() => {});
       }
     } else {
+      // ✅ Tạo page mới nếu chưa có
       const createdPage = await notion.pages.create({
         parent: { page_id: PARENT_PAGE_ID },
         properties: {
@@ -63,6 +72,7 @@ function chunkArray(array, size) {
       console.log(`✅ Created new page: ${titleText}`);
     }
 
+    // 🧱 Append các block mới
     for (const chunk of chunks) {
       await notion.blocks.children.append({
         block_id: pageId,
